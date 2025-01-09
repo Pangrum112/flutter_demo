@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/component/profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -61,27 +62,44 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
+          child: Scaffold(
+              body: Column(
+                children: [
+                  NewWidget(),
+                ],
+              )),
+          // This trailing comma makes auto-formatting nicer for build methods.
+        ));
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  const NewWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
       child: Scaffold(
-          body: Column(
+        body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(children: [
-              Image.asset('assets/images/user_profile.png'),
-                const SizedBox(width:8)
-
-              ,const Column(
-                 mainAxisAlignment: MainAxisAlignment.start,
-                 crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-
-                Text("Hey Pangrum", style: TextStyle(fontSize: 14)),
-                Text("Ready to order?",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+              Profile(),
+              Text("select by category",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Column(children: [
+                Image.asset('assets/images/meat.png', width: 58, height: 58),
+                SizedBox(
+                  height: 4,
+                ),
+                Text("Meat",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
               ])
-                      ],
-                    ),
-            ],
-          )),
-      // This trailing comma makes auto-formatting nicer for build methods.
-    ));
+            ]),
+      ),
+    );
+
   }
 }
