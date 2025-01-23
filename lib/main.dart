@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/component/profile.dart';
 
+import 'detail.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -62,14 +64,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-          child: Scaffold(
-              body: Column(
-                children: [
-                  NewWidget(),
-                ],
-              )),
-          // This trailing comma makes auto-formatting nicer for build methods.
-        ));
+      child: Scaffold(
+          body: Column(
+        children: [
+          NewWidget(),
+        ],
+      )),
+      // This trailing comma makes auto-formatting nicer for build methods.
+    ));
   }
 }
 
@@ -80,26 +82,25 @@ class NewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Profile(),
-              Text("select by category",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              Column(children: [
-                Image.asset('assets/images/meat.png', width: 58, height: 58),
-                SizedBox(
-                  height: 4,
-                ),
-                Text("Meat",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
-              ])
-            ]),
-      ),
-    );
-
+    return Column(
+        children: [
+          Profile(),
+          Text("select by category",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Column(children: [
+          Image.asset('assets/images/meat.png', width: 58, height: 58),
+          SizedBox(
+            height: 4,
+          ),
+          Text("Meat",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
+          ]),
+          const SizedBox(height:20),
+          ElevatedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> Details()));
+          },
+              child: Text("Go to next page"))
+        ]);
   }
 }
+
